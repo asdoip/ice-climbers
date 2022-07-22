@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1655644851 source:c:\users\asdoip\dropbox\pc (2)\desktop\cube2\main.cpp
+	<stdio.h>
+	<allegro.h>
+
+1658579346 source:c:\users\asdoip\dropbox\pc (2)\desktop\cubo3\main.cpp
+	<stdio.h>
+	<allegro.h>
+	<time.h>
+
