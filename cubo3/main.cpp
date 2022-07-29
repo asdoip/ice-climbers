@@ -31,6 +31,7 @@ int dir,x1,y1,x2,y2,x3,y3;
 };
 struct _max{
     _ju pez;
+    _ju pp2;
     _ju ave;
     _ju j;
     _jux ovni;
@@ -41,6 +42,7 @@ int r,c;
 
 int z=0;       /*controlador de cerrado*/
 char mot[MAXAL][MAXANC];
+char motr[MAXAL][MAXANC];
 
 void dibujar_mot();        /*dibujadores*/
 void lector();
@@ -64,6 +66,7 @@ _ju j(_ju p);
 FILE *fl = fopen("mapa1.txt","r+t");
 
 int main(){                     /*funcion principal*/
+    int s=0;
     allegro_init();
     install_keyboard();
     set_color_depth(32);
@@ -105,9 +108,10 @@ int main(){                     /*funcion principal*/
     pp.y=105;
 
     _ju pp2;     /*pez2*/
-    pp.dir=0;
-    pp.x=300;
-    pp.y=210;
+
+     pp2=pp;
+
+     pp2.y=210;
 
     _ju a;     /*ave*/
     a.dir=0;
@@ -123,15 +127,17 @@ int main(){                     /*funcion principal*/
     n.y2=0;
     n.y3=0;
 
+    _jun c;
+
     _jun esp;
     _max t;
     lector();
     while(!key[KEY_ESC]){      /*ciclo sin fin*/
         p=j(p);
+        scroll_screen(p.x,p.y);
         dibujar_mot();
         imagina_cactus(p);
         pp=pez(pp,p);
-        printf("a");
         pp2=pez(pp2,p);
         a=ave(a,p);
         n=ovni(n,p);
@@ -142,6 +148,8 @@ int main(){                     /*funcion principal*/
             p.y=t.j.y;
             pp.x=t.pez.x;
             pp.y=t.pez.y;
+            pp2.y=t.pp2.y;
+            pp2.x=t.pp2.x;
             a.x=t.ave.x;
             a.y=t.ave.y;
             n.x1=t.ovni.x1;
@@ -151,6 +159,11 @@ int main(){                     /*funcion principal*/
             n.y2=t.ovni.y2;
             n.y3=t.ovni.y3;
             z=0;
+        for(int e=0;e<MAXAL;e++){
+        for(int w=0;w<MAXANC;w++){
+            mot[e][w]=motr[e][w];
+        }
+        }
         }
         clear(buffer);
     }
@@ -181,11 +194,16 @@ while(!feof(fl)){
      c++;
      r=0;
     }
-    if(a!='\n' && a!='n'){
+    if(a!='\n'){
     mot[c][r]=a;
     r++;
     }
 }
+    for(int e=0;e<MAXAL;e++){
+        for(int w=0;w<MAXANC;w++){
+            motr[e][w]=mot[e][w];
+        }
+    }
 }
 
 void pantalla(){
@@ -253,6 +271,8 @@ _max estado(_ju p,_ju pp,_ju pp2,_ju a,_jux n){
             t.pez.dir=0;
             t.pez.x=100;
             t.pez.y=375;
+            t.pp2.y=210;
+            t.pp2.x=120;
             t.ave.x=200;
             t.ave.y=200;
             t.ovni.x1=40;
@@ -418,3 +438,4 @@ _jux ovni(_jux n,_ju p){
     }
     return n;
 };
+
