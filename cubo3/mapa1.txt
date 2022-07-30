@@ -1,6 +1,14 @@
 O                               O
                                                                   
                                  
+YYYYYYYYYYYXXXXXXXXXXXYYYYYYYYYYY
+YYYYYYYYYY             YYYYYYYYYY
+YYYYYYYYYY             YYYYYYYYYY
+YYYYYYYYYY             YYYYYYYYYY
+YYYYYYYYYYXXXXXXXXXXXXXYYYYYYYYYY
+YYYYYYYYY               YYYYYYYYY
+YYYYYYYYY               YYYYYYYYY
+YYYYYYYYY               YYYYYYYYY
 YYYYYYYYYXXXXXXXXXXXXXXXYYYYYYYYY
 YYYYYYYY                 YYYYYYYY
 YYYYYYYY                 YYYYYYYY
@@ -20,14 +28,6 @@ YYYYY                       YYYYY
 YYYYYXXXXXXXXXXXXXXXXXXXXXXXYYYYY
 YYYY                         YYYY
 YYYY                         YYYY
-YYYY                         YYYY
-YYYYXXXXXXXXXXXXXXXXXXXXXXXXXYYYY
-YYY                           YYY
-YYY                           YYY
-YYY                           YYY
-YYYXXXXXXXXXXXXXXXXXXXXXXXXXXXYYY
-YY                             YY
-YY                             YY
 YYYY                         YYYY
 YYYYXXXXXXXXXXXXXXXXXXXXXXXXXYYYY
 YYY                           YYY
