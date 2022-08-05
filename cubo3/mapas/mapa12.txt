@@ -1,23 +1,35 @@
-LLLLOLLLLLLLLLLLLLLLLLLLLLLOLLLLL
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 
-           YYY     YYYLLLLLLLLLLL
+LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+            YY     YYLLLLLLLLLLLL
+            Y       YLLLLLLLLLLLL
+            Y       YLLLLLLLLLLLL
+           Y  YYYYY  YLLLLLLLLLLL
            Y         YLLLLLLLLLLL
+           Y  YY YY  YLLLLLLLLLLL
+          Y           YLLLLLLLLLL
           Y           YLLLLLLLLLL
           Y   YYYY    YLLLLLLLLLL
          Y             YLLLLLLLLL
          Y             YLLLLLLLLL
-        Y   YYY  YYY    YLLLLLLLL
+         Y  YYY   YYY  YLLLLLLLLL
         Y               YLLLLLLLL
-       Y       F         YLLLLLLL
-       Y     YYYYY       YLLLLLLL
+        Y               YLLLLLLLL
+        Y    YYYYYY     YLLLLOLLL
+       Y                 YLLLLLLL
+       Y                 YLLLLLLL
+       Y  YYYY   YYYYY   YLLLOLLL
       Y                   YLLLLLL
+      Y                   YLLOLLL
       Y                   YLLLLLL
-     Y   YYYY     YYYY     YLLLLL
+  O  Y    NNN              YLOLLL
      Y                     YLLLLL
+     Y   YYYY     YYYY     YLLLLL
     Y                       YLLLL
     Y                       YLLLL
+    Y                    F  YLLLL
     YYYYYYYXXXXXXXXXXXYYYYYYYLLLL
    YYYYYYY             YYYYYYYLLL
    YYYYYYY             YYYYYYYLLL

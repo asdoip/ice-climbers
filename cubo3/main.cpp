@@ -2,7 +2,7 @@
 #include <allegro.h>
 #include <time.h>
 
-#define MAX_ALTURA  54
+#define MAX_ALTURA  66
 #define MAX_ANCHURA  34
 #define ALTURA_REAL  36
 
@@ -23,8 +23,11 @@ BITMAP *Aliado_Nave_Espacial_Parte_3;
 BITMAP *Aliado_Nave_Espacial_Parte_3_bmp;
 BITMAP *Fruta;
 BITMAP *Nube_Parte_1;
+BITMAP *Nube_Parte_1_bmp;
 BITMAP *Nube_Parte_2;
+BITMAP *Nube_Parte_2_bmp;
 BITMAP *Nube_Parte_3;
+BITMAP *Nube_Parte_3_bmp;
 
 struct _entidad_nave{   /*structuras*/
 int Direccion_Nave,Posicion_X_Parte_1,Posicion_Y_Parte_1,Posicion_X_Parte_2,Posicion_Y_Parte_2,Posicion_X_Parte_3,Posicion_Y_Parte_3;
@@ -39,6 +42,7 @@ struct _Reinicio{
     _entidad Enemigo_Murcielago_Valores;
     _entidad_nave Nave_Espacial;
 };
+
 int Control_de_Reinicio=0;
 
 char Montana[MAX_ALTURA][MAX_ANCHURA];
@@ -56,6 +60,7 @@ void Dibujar_Enemigo_Murcielago(_entidad Enemigo_Murcielago_Valores);
 void Dibujar_Aliado_Nave_Espacial(_entidad_nave Nave_Espacial);
 void Dibujar_Enemigo_Pez(_entidad Enemigo_Pez_Valores_Numero_1);
 void Redibujador(_entidad Personaje_Cactus_Valores);
+void Dibujar_Nube(_entidad_nave Nube);
 _Reinicio Todas_las_Posiciones(_entidad Personaje_Cactus_Valores,_entidad Enemigo_Pez_Valores_Numero_1,_entidad Enemigo_Pez_Valores_Numero_2,_entidad Enemigo_Murcielago_Valores,_entidad_nave Nave_Espacial);
 
 void Perdida();             /*Pantallas*/
@@ -64,7 +69,8 @@ void Ganancia();
 _entidad Enemigo_Pez_Rutina(_entidad Enemigo_Pez_Valores_Numero_1,_entidad Personaje_Cactus_Valores); /*movimiento*/
 _entidad Enemigo_Murcielago_Rutina(_entidad Enemigo_Murcielago_Valores,_entidad Personaje_Cactus_Valores);
 _entidad_nave Aliado_Nave_Espacial_Rutina(_entidad_nave Nave_Espacial,_entidad Personaje_Cactus_Valores);
-_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores);
+_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube);
+_entidad_nave Nube_rutina(_entidad_nave Nube);
 
 FILE *Mapa_en_Texto = fopen("./mapas/mapa12.txt","r+t");
 
@@ -89,6 +95,12 @@ int main(){                     /*funcion principal*/
     Aliado_Nave_Espacial_Parte_3_bmp=load_bitmap("./bmp/nave.bmp",NULL);
     Aliado_Nave_Espacial_Parte_3=create_bitmap(20,15);
     Fruta=load_bitmap("./bmp/fruta.bmp",NULL);
+    Nube_Parte_1_bmp=load_bitmap("./bmp/nube.bmp",NULL);
+    Nube_Parte_1=create_bitmap(20,15);
+    Nube_Parte_2_bmp=load_bitmap("./bmp/nube.bmp",NULL);
+    Nube_Parte_2=create_bitmap(20,15);
+    Nube_Parte_3_bmp=load_bitmap("./bmp/nube.bmp",NULL);
+    Nube_Parte_3=create_bitmap(20,15);
 
     clear_to_color(buffer,0x000000);           /*Pantalla de inicio*/
     while(!key[KEY_K]){
@@ -104,7 +116,7 @@ int main(){                     /*funcion principal*/
     Personaje_Cactus_Valores.Direccion=0;
     Personaje_Cactus_Valores.Posicion_X=200;
     Personaje_Cactus_Valores.Posicion_Y=480;
-    Personaje_Cactus_Valores.m=17;
+    Personaje_Cactus_Valores.m=29;
 
     _entidad Enemigo_Pez_Valores_Numero_1;     /*pez*/
     Enemigo_Pez_Valores_Numero_1.Direccion=0;
@@ -127,19 +139,118 @@ int main(){                     /*funcion principal*/
     Nave_Espacial.Posicion_X_Parte_1=140;
     Nave_Espacial.Posicion_X_Parte_2=160;
     Nave_Espacial.Posicion_X_Parte_3=180;
-    Nave_Espacial.Posicion_Y_Parte_1=0;
-    Nave_Espacial.Posicion_Y_Parte_2=0;
-    Nave_Espacial.Posicion_Y_Parte_3=0;
+    Nave_Espacial.Posicion_Y_Parte_1=15;
+    Nave_Espacial.Posicion_Y_Parte_2=15;
+    Nave_Espacial.Posicion_Y_Parte_3=15;
+
+    _entidad_nave Nube;    /*ovni*/
+    Nube=Nave_Espacial;
+
     _Reinicio Archivador;
     Replicador_de_Mapa();
     Personaje_Cactus_Valores=Ascenso_Montana(Personaje_Cactus_Valores);
     while(!key[KEY_ESC]){      /*ciclo sin fin*/
-        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores);
-        Dibujar_Personaje_Cactus(Personaje_Cactus_Valores);
-        Enemigo_Pez_Valores_Numero_1=Enemigo_Pez_Rutina(Enemigo_Pez_Valores_Numero_1,Personaje_Cactus_Valores);
+        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores,Nube);
+      /*  Enemigo_Pez_Valores_Numero_1=Enemigo_Pez_Rutina(Enemigo_Pez_Valores_Numero_1,Personaje_Cactus_Valores);
         Enemigo_Pez_Valores_Numero_2=Enemigo_Pez_Rutina(Enemigo_Pez_Valores_Numero_2,Personaje_Cactus_Valores);
-        Enemigo_Murcielago_Valores=Enemigo_Murcielago_Rutina(Enemigo_Murcielago_Valores,Personaje_Cactus_Valores);
-        if(Personaje_Cactus_Valores.m==-1){
+        Enemigo_Murcielago_Valores=Enemigo_Murcielago_Rutina(Enemigo_Murcielago_Valores,Personaje_Cactus_Valores); */
+        if(Personaje_Cactus_Valores.m<12){
+        switch (Personaje_Cactus_Valores.m){
+            case 11:
+                    {
+                        Nube.Posicion_Y_Parte_1=225;
+                        Nube.Posicion_Y_Parte_2=225;
+                        Nube.Posicion_Y_Parte_3=225;
+                        break;
+                    }
+            case 10:
+                    {
+                        Nube.Posicion_Y_Parte_1=240;
+                        Nube.Posicion_Y_Parte_2=240;
+                        Nube.Posicion_Y_Parte_3=240;
+                        break;
+                    }
+            case 9:
+                    {
+                        Nube.Posicion_Y_Parte_1=255;
+                        Nube.Posicion_Y_Parte_2=255;
+                        Nube.Posicion_Y_Parte_3=255;
+                        break;
+                    }
+            case 8:
+                    {
+                        Nube.Posicion_Y_Parte_1=270;
+                        Nube.Posicion_Y_Parte_2=270;
+                        Nube.Posicion_Y_Parte_3=270;
+                        break;
+                    }
+            case 7:
+                    {
+                        Nube.Posicion_Y_Parte_1=285;
+                        Nube.Posicion_Y_Parte_2=285;
+                        Nube.Posicion_Y_Parte_3=285;
+                        break;
+                    }
+            case 6:
+                    {
+                        Nube.Posicion_Y_Parte_1=300;
+                        Nube.Posicion_Y_Parte_2=300;
+                        Nube.Posicion_Y_Parte_3=300;
+                        break;
+                    }
+            case 5:
+                    {
+                        Nube.Posicion_Y_Parte_1=315;
+                        Nube.Posicion_Y_Parte_2=315;
+                        Nube.Posicion_Y_Parte_3=315;
+                        break;
+                    }
+            case 4:
+                    {
+                        Nube.Posicion_Y_Parte_1=330;
+                        Nube.Posicion_Y_Parte_2=330;
+                        Nube.Posicion_Y_Parte_3=330;
+                        break;
+                    }
+            case 3:
+                    {
+                        Nube.Posicion_Y_Parte_1=345;
+                        Nube.Posicion_Y_Parte_2=345;
+                        Nube.Posicion_Y_Parte_3=345;
+                        break;
+                    }
+            case 2:
+                    {
+                        Nube.Posicion_Y_Parte_1=360;
+                        Nube.Posicion_Y_Parte_2=360;
+                        Nube.Posicion_Y_Parte_3=360;
+                        break;
+                    }
+            case 1:
+                    {
+                        Nube.Posicion_Y_Parte_1=375;
+                        Nube.Posicion_Y_Parte_2=375;
+                        Nube.Posicion_Y_Parte_3=375;
+                        break;
+                    }
+            case 0:
+                    {
+                        Nube.Posicion_Y_Parte_1=390;
+                        Nube.Posicion_Y_Parte_2=390;
+                        Nube.Posicion_Y_Parte_3=390;
+                        break;
+                    }
+            case -1:
+                    {
+                        Nube.Posicion_Y_Parte_1=405;
+                        Nube.Posicion_Y_Parte_2=405;
+                        Nube.Posicion_Y_Parte_3=405;
+                        break;
+                    }
+        }
+        Nube=Nube_rutina(Nube);
+        }
+        if(Personaje_Cactus_Valores.m==-2){
         Nave_Espacial=Aliado_Nave_Espacial_Rutina(Nave_Espacial,Personaje_Cactus_Valores);
         }
         if(Personaje_Cactus_Valores.Posicion_Y<300 && Personaje_Cactus_Valores.m>-1){
@@ -260,6 +371,14 @@ void Dibujar_Enemigo_Pez(_entidad Enemigo_Pez_Valores_Numero_1){
     blit(Enemigo_Pez_bmp,Enemigo_Pez, Enemigo_Pez_Valores_Numero_1.Direccion*20,0,0,0,20,15);
     draw_sprite(buffer,Enemigo_Pez,Enemigo_Pez_Valores_Numero_1.Posicion_X,Enemigo_Pez_Valores_Numero_1.Posicion_Y);
 }
+void Dibujar_Nube(_entidad_nave Nube){
+    blit(Nube_Parte_1_bmp,Nube_Parte_1, 0*20,0,0,0,20,15);
+    draw_sprite(buffer,Nube_Parte_1,Nube.Posicion_X_Parte_1,Nube.Posicion_Y_Parte_1);
+    blit(Nube_Parte_2_bmp,Nube_Parte_2, 1*20,0,0,0,20,15);
+    draw_sprite(buffer,Nube_Parte_2,Nube.Posicion_X_Parte_2,Nube.Posicion_Y_Parte_2);
+    blit(Nube_Parte_3_bmp,Nube_Parte_3, 2*20,0,0,0,20,15);
+    draw_sprite(buffer,Nube_Parte_3,Nube.Posicion_X_Parte_3,Nube.Posicion_Y_Parte_3);
+}
 
 void Perdida(){     /*ganar, perder*/
     Control_de_Reinicio=1;
@@ -299,11 +418,11 @@ _Reinicio Todas_las_Posiciones(_entidad Personaje_Cactus_Valores,_entidad Enemig
 }
             Archivador.Personaje_Cactus_Valores.Posicion_X=100;
             Archivador.Personaje_Cactus_Valores.Posicion_Y=495;
-            Archivador.Personaje_Cactus_Valores.m=17;
-            Archivador.Enemigo_Pez_Valores_Numero_1.Posicion_X=100;
+            Archivador.Personaje_Cactus_Valores.m=18;
+            Archivador.Enemigo_Pez_Valores_Numero_1.Posicion_X=140;
             Archivador.Enemigo_Pez_Valores_Numero_1.Posicion_Y=375;
-            Archivador.Enemigo_Pez_Valores_Numero_2.Posicion_Y=210;
-            Archivador.Enemigo_Pez_Valores_Numero_2.Posicion_X=120;
+            Archivador.Enemigo_Pez_Valores_Numero_2.Posicion_Y=195;
+            Archivador.Enemigo_Pez_Valores_Numero_2.Posicion_X=140;
             Archivador.Enemigo_Murcielago_Valores.Posicion_X=200;
             Archivador.Enemigo_Murcielago_Valores.Posicion_Y=200;
             Archivador.Nave_Espacial.Posicion_X_Parte_1=40;
@@ -324,14 +443,14 @@ void Redibujador(_entidad Personaje_Cactus_Valores){
         }
     }
 }
-_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores){        /*Rutinas*/
+_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube){        /*Rutinas*/
         int Retraso=3;
         Retardamiento(Retraso);
         if(Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+15)/15][Personaje_Cactus_Valores.Posicion_X/20] != 'X' || Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+15)/15][Personaje_Cactus_Valores.Posicion_X/20] !='Y'){
             Personaje_Cactus_Valores.Direccion=1;
             Personaje_Cactus_Valores.Posicion_Y +=15;
         }
-        if(Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20] == 'X' || Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20] =='Y'){
+        if(Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20] == 'X' || Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20] =='Y' ||Personaje_Cactus_Valores.Posicion_Y==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_1==Personaje_Cactus_Valores.Posicion_X|| Personaje_Cactus_Valores.Posicion_Y==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_2==Personaje_Cactus_Valores.Posicion_X || Personaje_Cactus_Valores.Posicion_Y==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_3==Personaje_Cactus_Valores.Posicion_X){
             Personaje_Cactus_Valores.Posicion_Y -=15;
         if(key[KEY_RIGHT]) Personaje_Cactus_Valores.Direccion=3;
         if(key[KEY_LEFT]) Personaje_Cactus_Valores.Direccion=7;
@@ -399,6 +518,7 @@ _entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores){        /*Ru
         if(Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20]=='F'){
             Montana_Real[Personaje_Cactus_Valores.Posicion_Y/15][Personaje_Cactus_Valores.Posicion_X/20]=' ';
         }
+        Dibujar_Personaje_Cactus(Personaje_Cactus_Valores);
         return Personaje_Cactus_Valores;
         }
 
@@ -415,11 +535,9 @@ _entidad Enemigo_Pez_Rutina(_entidad Enemigo_Pez_Valores_Numero_1,_entidad Perso
            /* Retardamiento(dos);*/
     if(Montana_Real[(Enemigo_Pez_Valores_Numero_1.Posicion_Y+15)/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X+20)/20] != 'X' || Montana_Real[Enemigo_Pez_Valores_Numero_1.Posicion_Y/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X+20)/20] == 'Y'){
         Enemigo_Pez_Valores_Numero_1.Direccion=0;
-        Enemigo_Pez_Valores_Numero_1.Posicion_X -=10;
     }
     if(Montana_Real[(Enemigo_Pez_Valores_Numero_1.Posicion_Y+15)/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X-20)/20] != 'X' || Montana_Real[Enemigo_Pez_Valores_Numero_1.Posicion_Y/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X-20)/20] == 'Y'){
         Enemigo_Pez_Valores_Numero_1.Direccion=1;
-        Enemigo_Pez_Valores_Numero_1.Posicion_X +=10;
     }
     if(Montana_Real[(Enemigo_Pez_Valores_Numero_1.Posicion_Y+15)/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X+20)/20] == 'X' && Enemigo_Pez_Valores_Numero_1.Direccion==1 || Montana_Real[(Enemigo_Pez_Valores_Numero_1.Posicion_Y+15)/15][(Enemigo_Pez_Valores_Numero_1.Posicion_X+20)/20] == 'Y' && Enemigo_Pez_Valores_Numero_1.Direccion==1){
             Enemigo_Pez_Valores_Numero_1.Posicion_X +=10;
@@ -502,4 +620,24 @@ _entidad_nave Aliado_Nave_Espacial_Rutina(_entidad_nave Nave_Espacial,_entidad P
     return Nave_Espacial;
 };
 
+_entidad_nave Nube_rutina(_entidad_nave Nube){
+        if(Montana_Real[Nube.Posicion_Y_Parte_3/15][(Nube.Posicion_X_Parte_3+20)/20] == 'O'){
+            Nube.Direccion_Nave=0;
+        }
+        if(Montana_Real[Nube.Posicion_Y_Parte_1/15][(Nube.Posicion_X_Parte_1-20)/20] == 'O'){
+            Nube.Direccion_Nave=1;
+        }
+        if(Nube.Direccion_Nave==1){
+            Nube.Posicion_X_Parte_1 +=20;
+            Nube.Posicion_X_Parte_2 +=20;
+            Nube.Posicion_X_Parte_3 +=20;
+        }
+        if(Nube.Direccion_Nave==0){
+            Nube.Posicion_X_Parte_1 -=20;
+            Nube.Posicion_X_Parte_2 -=20;
+            Nube.Posicion_X_Parte_3 -=20;
+        }
+    Dibujar_Nube(Nube);
+    return Nube;
+}
 
