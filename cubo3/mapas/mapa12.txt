@@ -24,9 +24,9 @@ LLOLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
       Y                   YLLLLLL
       Y                   YLLOLLL
       Y                   YLLLLLL
-  O  Y    NNN              YLOLLL
-     Y                     YLLLLL
-     Y   YYYY     YYYY     YLLLLL
+     YO                   OYLLLLL
+     YO                   OYLLLLL
+     Y    YYYY     YYYY    YLLLLL
     Y                       YLLLL
     Y                       YLLLL
     Y                    F  YLLLL
