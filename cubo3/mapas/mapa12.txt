@@ -1,55 +1,55 @@
 LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
 LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
-LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
           ZYYYY    YYYZLLLLLLLLLL
           Z           ZLLLLLLLLLL
-          Z           ZLLLLLLLLLL
+          Z F         ZLLLLLLLLLL
           Z   YYYYY   ZLLLLLLLLLL
-         Z             ZLLLLLLLLL
-         Z             ZLLLLLLLLL
-         Z YYYY   YYYY ZLLLLLLLLL
-        Z               ZLLLLLLLL
-        Z               ZLLLLLLLL
+      O  Z             ZLLOLLLLLL
+      O  ZF            ZLLOLLLLLL
+      O  Z YYYY   YYYY ZLLOLLLLLL
+      O Z             F ZLOLLLLLL
+      O Z               ZLOLLLLLL
       O Z     N         ZLOLLLLLL
-       Z                 ZLLLLLLL
-       Z                 ZLLLLLLL
-       Z     YYYYYY      ZLLLLLLL
-      Z                   ZLLLLLL
+      OZ                 ZOLLLLLL
+      OZ          F      ZOLLLLLL
+      OZ     YYYYYY      ZOLLLLLL
+     OZ                   ZOLLLLL
       Z                   ZLLLLLL
       Z YYYYYY     YYYYYY ZLLLLLL
-     Z                     ZLLLLL
+     Z                F    ZLLLLL
      Z                     ZLLLLL
    O Z     N               ZLOLLL
     Z                       ZLLLL
-    Z                       ZLLLL
+    Z    F                  ZLLLL
   O Z              N        ZLOLL
    Z                         ZLLL
    Z                         ZLLL
    Z  YYYY      YYYY    YYYY ZLLL
   Z                           ZLL
-  Z                           ZLL
+  Z                    F      ZLL
   Z      YYYYYYY   YYYYYY     ZLL
  Z                             ZL
  Z                             ZL
- Z                             ZL
+ Z                           F ZL
 YYYYYYXXXXXXXXXXXXXXXXXXXXXYYYYYY
 YYYYYZ                     ZYYYYY
-YYYPYZ                     ZYPYYY
+YYYPYZ    F                ZYPYYY
 YYYYYZ                     ZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYYZ                     ZYYYYY
 YYYPYZ                     ZYPYYY
-YYYYYZ                     ZYYYYY
+YYYYYZ                    FZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYYZ                     ZYYYYY
 YYYPYZ                     ZYPYYY
-YYYYYZ                     ZYYYYY
+YYYYYZ              F      ZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYZ                       ZYYYY
 YYPYZ                       ZYPYY
-YYYYZ                       ZYYYY
+YYYYZ     F                 ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC
 YYYYZ                       ZYYYY
 YYPYZ                       ZYPYY
@@ -57,7 +57,7 @@ YYYYZ                       ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC
 YYYYZ                       ZYYYY
 YYPYZ                       ZYPYY
-YYYYZ                       ZYYYY
+YYYYZ               F       ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC 
 YYYZ                         ZYYY
 YPYZ                         ZYPY
@@ -65,5 +65,5 @@ YYYZ                         ZYYY
 CCCCXXXXXXXXXXXXXXXXXXXXXXXXXCCCC
 YYYZ                         ZYYY
 YPYZ                         ZYPY
-YYYZ                         ZYYY
+YYYZ      U                  ZYYY
 YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
