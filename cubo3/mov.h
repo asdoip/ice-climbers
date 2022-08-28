@@ -68,14 +68,13 @@ void Redibujador(_entidad Personaje_Cactus_Valores,char Montana[MAX_ALTURA_nivel
 void Redibujador_2(_entidad Personaje_Cactus_Valores, char Montana_2[MAX_ALTURA_nivel_2][MAX_ANCHURA]);
 void Dibujar_Nube(_entidad_nave Nube);
 _entidad Sprite_Personaje(_entidad Personaje_Cactus_valores);
-void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMPLE *W);
+void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMPLE *W,SAMPLE *F,SAMPLE *ciclo,SAMPLE *MENU);
 
 
 _entidad Enemigo_Pez_Rutina(_entidad Enemigo_Pez_Valores_Numero_1,_entidad Personaje_Cactus_Valores,int desicion); /*movimiento*/
 _entidad Enemigo_Murcielago_Rutina(_entidad Enemigo_Murcielago_Valores,_entidad Personaje_Cactus_Valores);
 _entidad_nave Aliado_Nave_Espacial_Rutina(_entidad_nave Nave_Espacial,_entidad Personaje_Cactus_Valores);
-_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube[TRES],int desicion,char Montana[MAX_ALTURA_nivel_1][MAX_ANCHURA]);
-_entidad Personaje_Cactus_Rutina_2(_entidad Personaje_Cactus_Valores,_entidad_nave Nube[TRES],int desicion,char Montana[MAX_ALTURA_nivel_2][MAX_ANCHURA]);
+_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube[TRES],int desicion,char Montana[MAX_ALTURA_nivel_1][MAX_ANCHURA],SAMPLE *LADRILLO,SAMPLE *FRUTA);
 _entidad_nave Nube_rutina(_entidad_nave Nube);
 
 _entidad Sprite_Personaje(_entidad Personaje_Cactus_valores){
@@ -115,11 +114,25 @@ void Dibujar_Nube(_entidad_nave Nube){
 }
 
 
-void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMPLE *W){
+void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMPLE *W,SAMPLE *F,SAMPLE *ciclo,SAMPLE *MENU){
     int p=0,h=0,u=0,i=0,j=0,k=0,aux=0,auxl[TRES];
     char In=0;
     if(Control_de_Reinicio==1){
-            clear_to_color(buffer,0x000000);
+            stop_sample(ciclo);
+    play_sample(F,200,0,1000,0);
+        while(!key[KEY_R]){
+    clear_to_color(buffer,0x000000);
+    textout_centre(buffer, font,"perdiste, presione r para reiniciar",300, 80, 0x3BFF14);
+    textout_centre(buffer, font,"presione ESC para salir",300, 130, 0x3BFF14);
+    blit(buffer,screen,0,0,0,0,660,700);
+    if(key[KEY_ESC]){
+        break;
+    }
+    }
+    }
+    if(Control_de_Reinicio==2){
+        play_sample(W,200,0,1000,0);
+        clear_to_color(buffer,0x000000);
             ranking _uno;
             char ran[SEIS][CUATRO];
             int Nran[SEIS];
@@ -145,7 +158,7 @@ void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMP
             _uno.Nombre[1]=65;
             _uno.Nombre[2]=65;
                 while(!key[KEY_R] && p<3){
-                    if(u<60){
+                    if(u<70){
                         u++;
                     }
     clear_to_color(buffer,0x000000);
@@ -153,18 +166,21 @@ void Todas_las_Posiciones(int Control_de_Reinicio,int Puntaje,FILE *Ranking,SAMP
         textout_centre(buffer, font,"_ _ _",300, 232, 0x3BFF14);
             textprintf_centre(buffer, font,300, 230, 0x3BFF14,"%c %c %c",_uno.Nombre[0],_uno.Nombre[1],_uno.Nombre[2]);
                      blit(buffer,screen,0,0,0,0,660,700);
-        if(key[KEY_RIGHT] && u==60){
+        if(key[KEY_RIGHT] && u==70){
             _uno.Nombre[h]++;
             u=0;
+            play_sample(MENU,50,0,1000,0);
         }
-        if(key[KEY_LEFT] && u==60){
+        if(key[KEY_LEFT] && u==70){
             _uno.Nombre[h]--;
             u=0;
+            play_sample(MENU,50,0,1000,0);
         }
-        if(key[KEY_ENTER] && u==60){
+        if(key[KEY_ENTER] && u==70){
             p++;
             h++;
             u=0;
+            play_sample(MENU,200,0,1000,0);
         }
     }
 for(h=0;h<TRES;h++){
@@ -186,9 +202,17 @@ for(i=0;i<CINCO;i++){
     }
 }
 }
+while(!key[KEY_C]){
 clear_to_color(buffer,0x000000);
-textout_centre(buffer, font,"Ranking",300, 80, 0x3BFF14);
-textprintf_centre(buffer, font,300, 230, 0x3BFF14,"%c %c %c",_uno.Nombre[0],_uno.Nombre[1],_uno.Nombre[2]);
+textout_centre(buffer, font,"Ranking",330, 60, 0x3BFF14);
+textprintf_centre(buffer, font,300, 90, 0x3BFF14,"1.- %c %c %c...........................................%d p",ran[0][0],ran[0][1],ran[0][2],Nran[0]);
+textprintf_centre(buffer, font,300, 100, 0x3BFF14,"2.- %c %c %c...........................................%d p",ran[1][0],ran[1][1],ran[1][2],Nran[1]);
+textprintf_centre(buffer, font,300, 110, 0x3BFF14,"3.- %c %c %c...........................................%d p",ran[2][0],ran[2][1],ran[2][2],Nran[2]);
+textprintf_centre(buffer, font,300, 120, 0x3BFF14,"4.- %c %c %c...........................................%d p",ran[3][0],ran[3][1],ran[3][2],Nran[3]);
+textprintf_centre(buffer, font,300, 130, 0x3BFF14,"5.- %c %c %c...........................................%d p",ran[4][0],ran[4][1],ran[4][2],Nran[4]);
+textout_centre(buffer, font,"Presione C para continuar",300,500, 0x3BFF14);
+blit(buffer,screen,0,0,0,0,660,700);
+}
 i=0;
 j=0;
 rewind(Ranking);
@@ -206,16 +230,6 @@ for(i=0;i<SEIS;i++){
             fputc(In,Ranking);
         }
 }
-  /*  textout_centre(buffer, font,"perdiste, presione k para reiniciar",300, 80, 0x3BFF14);
-    textout_centre(buffer, font,"perdiste, presione l para ingresar al otro Nivel",300, 100, 0x3BFF14);
-    textout_centre(buffer, font,"presione ESC para salir",300, 130, 0x3BFF14);
-    blit(buffer,screen,0,0,0,0,660,700);
-    if(key[KEY_ESC]){
-        break;
-    } */
-    }
-    if(Control_de_Reinicio==2){
-        play_sample(W,200,0,1000,0);
         while(!key[KEY_R]){
             clear_to_color(buffer,0x000000);
             textout_centre(buffer, font,"Ganaste, presione r para reiniciar",300, 100, 0x3BFF14);
@@ -461,9 +475,10 @@ void Redibujador(_entidad Personaje_Cactus_Valores,char Montana[MAX_ALTURA_nivel
 
 
 
-_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube, int desicion,char Montana[MAX_ALTURA_nivel_1][MAX_ANCHURA],char Montana_2[MAX_ALTURA_nivel_2][MAX_ANCHURA]){
+_entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave Nube, int desicion,char Montana[MAX_ALTURA_nivel_1][MAX_ANCHURA],char Montana_2[MAX_ALTURA_nivel_2][MAX_ANCHURA],SAMPLE *LADRILLO,SAMPLE *FRUTA){
     if(Montana_Real[(Personaje_Cactus_Valores.Posicion_Y-15)/15][Personaje_Cactus_Valores.Posicion_X/20] == 'X'){
         Montana_Real[(Personaje_Cactus_Valores.Posicion_Y-15)/15][Personaje_Cactus_Valores.Posicion_X/20] =' ';
+        play_sample(LADRILLO,150,0,1000,0);
         Personaje_Cactus_Valores.Punt +=15;
     }
     if((Personaje_Cactus_Valores.Posicion_Y+30)==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_1==Personaje_Cactus_Valores.Posicion_X || (Personaje_Cactus_Valores.Posicion_Y+30)==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_2==Personaje_Cactus_Valores.Posicion_X || (Personaje_Cactus_Valores.Posicion_Y+30)==Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_3==Personaje_Cactus_Valores.Posicion_X){
@@ -500,7 +515,7 @@ _entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave
             Personaje_Cactus_Valores.Posicion_Y--;
             Personaje_Cactus_Valores.t++;
         }
-        if(Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20]!='Y' && Personaje_Cactus_Valores.l==0 && Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20]!='X' && Personaje_Cactus_Valores.l==0 && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_1!=Personaje_Cactus_Valores.Posicion_X && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_2!=Personaje_Cactus_Valores.Posicion_X && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_3!=Personaje_Cactus_Valores.Posicion_X !='C' && Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20] !='Z'){
+        if(Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20]!='Y' && Personaje_Cactus_Valores.l==0 && Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20]!='X' && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_1!=Personaje_Cactus_Valores.Posicion_X && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_2!=Personaje_Cactus_Valores.Posicion_X && (Personaje_Cactus_Valores.Posicion_Y+30)!=Nube.Posicion_Y_Parte_1 && Nube.Posicion_X_Parte_3!=Personaje_Cactus_Valores.Posicion_X && Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+30)/15][Personaje_Cactus_Valores.Posicion_X/20] !='Z' || (Personaje_Cactus_Valores.Posicion_Y+30)==Nube.Posicion_Y_Parte_1 && Personaje_Cactus_Valores.l==0){
             Personaje_Cactus_Valores.Posicion_Y++;
             Personaje_Cactus_Valores.t--;
         }
@@ -562,6 +577,7 @@ _entidad Personaje_Cactus_Rutina(_entidad Personaje_Cactus_Valores,_entidad_nave
     }
     if(Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+15)/15][Personaje_Cactus_Valores.Posicion_X/20]=='F'){
         Montana_Real[(Personaje_Cactus_Valores.Posicion_Y+15)/15][Personaje_Cactus_Valores.Posicion_X/20]=' ';
+        play_sample(FRUTA,150,0,1000,0);
         Personaje_Cactus_Valores.Punt +=100;
     }
     Dibujar_Personaje_Cactus(Personaje_Cactus_Valores);

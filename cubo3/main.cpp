@@ -30,10 +30,18 @@ int main(){
     SAMPLE *ciclo;
     SAMPLE *M;
     SAMPLE *W;
+    SAMPLE *F;
+    SAMPLE *MENU;
+    SAMPLE *LADRILLO;
+    SAMPLE *FRUTA;
+    FRUTA=load_wav("./musica/FRUTA.wav");
+    LADRILLO=load_wav("./musica/LADRILLO.wav");
+    MENU=load_wav("./musica/MENU.wav");
+    F=load_wav("./musica/F.wav");
     W=load_wav("./musica/W.wav");
     ciclo=load_wav("./musica/J.wav");
     M=load_wav("./musica/M.wav");
-    play_sample(M,200,0,1000,0);
+    play_sample(M,150,0,1000,0);
 
     char Montana[MAX_ALTURA_nivel_1][MAX_ANCHURA];
     char Montana_de_Respaldo[MAX_ALTURA_nivel_1][MAX_ANCHURA];
@@ -82,8 +90,9 @@ int main(){
         Mapa_en_Texto = fopen("./mapas/mapa2.txt","r+t");
         desicion=2;
     }
-
     stop_sample(M);
+    play_sample(MENU,200,0,1000,0);
+
     _entidad Personaje_Cactus_Valores; /*catus*/
 
     Personaje_Cactus_Valores.Direccion=0;
@@ -181,7 +190,7 @@ int main(){
             Personaje_Cactus_Valores.Punt=0;
         }
         for(h=0;h<TRES;h++){
-        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores,Nube[h],desicion,Montana,Montana_2);
+        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores,Nube[h],desicion,Montana,Montana_2,LADRILLO,FRUTA);
         }
         for(h=0;h<DOS;h++){
         Enemigo_Pez_Valores_Numero_[h]=Enemigo_Pez_Rutina(Enemigo_Pez_Valores_Numero_[h],Personaje_Cactus_Valores,desicion);
@@ -237,7 +246,8 @@ int main(){
             Control_de_Reinicio=2;
         }
            if(Control_de_Reinicio>0){
-            Todas_las_Posiciones(Control_de_Reinicio,Puntaje,Ranking,W);
+            stop_sample(ciclo);
+            Todas_las_Posiciones(Control_de_Reinicio,Puntaje,Ranking,W,F,ciclo,MENU);
             Personaje_Cactus_Valores.perdida=0;
             Enemigo_Murcielago_Valores[0].perdida=0;
                         Control_de_Reinicio=0;
@@ -274,6 +284,9 @@ int main(){
             Montana[i][j]=Montana_de_Respaldo[i][j];
         }
         }
+            stop_sample(F);
+            stop_sample(W);
+            play_sample(ciclo,200,0,1000,0);
             Personaje_Cactus_Valores=Ascenso_Montana(Personaje_Cactus_Valores,Montana);
         }
         clear(buffer);
@@ -332,8 +345,8 @@ int main(){
             Puntaje=Puntaje+Personaje_Cactus_Valores.Punt;
             Personaje_Cactus_Valores.Punt=0;
         }
-        for(h=0;h<DOS;h++){
-        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores,Nube[h],desicion,Montana,Montana_2);
+        for(h=0;h<TRES;h++){
+        Personaje_Cactus_Valores=Personaje_Cactus_Rutina(Personaje_Cactus_Valores,Nube[h],desicion,Montana,Montana_2,LADRILLO,FRUTA);
         }
         if(Personaje_Cactus_Valores.m>37){
             Enemigo_Pez_Valores_Numero_[0]=Enemigo_Pez_Rutina(Enemigo_Pez_Valores_Numero_[0],Personaje_Cactus_Valores,desicion);
@@ -404,7 +417,7 @@ int main(){
             Control_de_Reinicio=2;
         }
             if(Control_de_Reinicio>0){
-            Todas_las_Posiciones(Control_de_Reinicio,Puntaje,Ranking,W);
+            Todas_las_Posiciones(Control_de_Reinicio,Puntaje,Ranking,W,F,ciclo,MENU);
     Nube[0].Posicion_Y_Parte_1=105;
     Nube[0].Posicion_Y_Parte_2=105;
     Nube[0].Posicion_Y_Parte_3=105;
