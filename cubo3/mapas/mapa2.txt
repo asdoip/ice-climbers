@@ -34,7 +34,7 @@ ZZZZZZ ZZZXXXXZZZZZXXXZZZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
-ZZZZZZFZZO     NNN     OZZFZZZZZZ
+ZZZZZZFZZO             OZZFZZZZZZ
 ZZZZZZ                     ZZZZZZ
 ZZZZZZ                     ZZZZZZ
 ZZZZZZ       Z     Z       ZZZZZZ
