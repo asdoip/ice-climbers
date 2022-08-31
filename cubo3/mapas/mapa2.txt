@@ -1,5 +1,5 @@
 LOLLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
-LOLLLLLLLLLLLLLLLLLLLLLLLLLLLLOLL
+LOLLLLLLLLLLLKLLLLLLLLLLLLLLLLOLL
 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
    YYYYY                 YYYYYLLL
@@ -34,10 +34,10 @@ ZZZZZZ ZZZXXXXZZZZZXXXZZZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
 ZZZZZZ ZZ               ZZ ZZZZZZ
-ZZZZZZFZZO             OZZFZZZZZZ
+ZZZZZZFZZO      +      OZZFZZZZZZ
 ZZZZZZ                     ZZZZZZ
 ZZZZZZ                     ZZZZZZ
-ZZZZZZ       Z     Z       ZZZZZZ
+ZZZZZZ       Z  P  Z       ZZZZZZ
 ZZZZZZ      ZZZZZZZZZXXX   ZZZZZZ
 ZZZZZ         ZZZZZ         ZZZZZ
 ZZZZZF         ZZZ         FZZZZZ
@@ -46,24 +46,24 @@ ZZZZZZZZZXXXXXZZZZZXXXXXZZZZZZZZZ
 ZZZ            ZZZ            ZZZ
 ZZZ            ZZZ            ZZZ
 ZZZF           ZZZ           FZZZ
-ZZZ      Z     ZZZ     Z      ZZZ
+ZZZ      Z  P  ZZZ  P  Z      ZZZ
 ZZZZZZXXZZZZZZZZZZZZZZZZZXXZZZZZZ
 ZZZ                           ZZZ
 ZZZ                           ZZZ
-ZZZ   F                       ZZZ
-ZOZ           NNN             ZOZ
 ZZZ                           ZZZ
-ZZZF   F                      ZZZ
-ZZZ      Z       Z      Z     ZZZ
+ZOZ           +               ZOZ
+ZZZ                           ZZZ
+ZZZF                          ZZZ
+ZZZ   P  Z   P    Z  P  Z     ZZZ
 ZZZZZZZZZZZZZZZZZZZZZZZZZXXXXXXXZ
 Z                               Z
 Z                               Z
 Z                               Z
-Z        Z               Z      Z
+Z        Z       P       Z  P   Z
 ZXXXXXXXXZZZZZZZZZZZZZZZZZZZZZZZZ
 Z                               Z
-Z                               Z
-Z                               Z
+Z A                             Z
+Z     A                         Z
 Z   Z                           Z
 Z   Z     Z                     Z
 ZZZZZZZZZZZZZZZZZZZZZZZZXXXXXXXXZ
@@ -71,12 +71,12 @@ Z                               Z
 Z                               Z
 Z                               Z
 Z                           Z   Z
-Z          Z                Z F Z
-ZXXXXXXXXXXZZZZZZZZZZZZZZZZZZZZZZ
+Z         Z        P        Z F Z
+ZXXXXXXXXXZZZZZZZZZZZZZZZZZZZZZZZ
 Z                               Z
 Z                               Z
 Z                               Z
 ZZZZZZZZZZZZZZZZZZZZZZXXXXXXXXXXZ
+Z      Q                        Z
 Z                               Z
-Z    U                          Z
 YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY

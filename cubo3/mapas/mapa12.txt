@@ -1,5 +1,5 @@
 LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
-LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
+LLLLLOLLLLLLLLLLLLLLLLLKLLLOLLLLL
 LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
 LLLLLOLLLLLLLLLLLLLLLLLLLLLOLLLLL
 LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
@@ -12,7 +12,7 @@ LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
       O  Z YYYY   YYYY ZLLOLLLLLL
       O Z             F ZLOLLLLLL
       O Z               ZLOLLLLLL
-      O Z     N         ZLOLLLLLL
+      O Z         N     ZLOLLLLLL
       OZ                 ZOLLLLLL
       OZ          F      ZOLLLLLL
       OZ     YYYYYY      ZOLLLLLL
@@ -21,10 +21,10 @@ LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
       Z YYYYYY     YYYYYY ZLLLLLL
      Z                F    ZLLLLL
      Z                     ZLLLLL
-   O Z     N               ZLOLLL
+   O Z         N           ZLOLLL
     Z                       ZLLLL
     Z    F                  ZLLLL
-  O Z              N        ZLOLL
+  O Z       N               ZLOLL
    Z                         ZLLL
    Z                         ZLLL
    Z  YYYY      YYYY    YYYY ZLLL
@@ -36,34 +36,34 @@ LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
  Z                           F ZL
 YYYYYYXXXXXXXXXXXXXXXXXXXXXYYYYYY
 YYYYYZ                     ZYYYYY
-YYYPYZ    F                ZYPYYY
+YYYYYZ    F                ZYYYYY
 YYYYYZ                     ZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYYZ                     ZYYYYY
-YYYPYZ                     ZYPYYY
+YYYYYZ    {                ZYYYYY
 YYYYYZ                    FZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYYZ                     ZYYYYY
-YYYPYZ                     ZYPYYY
-YYYYYZ              F      ZYYYYY
+YYYYYZ                     ZYYYYY
+YYYYYZ           }  F      ZYYYYY
 CCCCCCXXXXXXXXXXXXXXXXXXXXXCCCCCC
 YYYYZ                       ZYYYY
-YYPYZ                       ZYPYY
+YYYYZ                       ZYYYY
 YYYYZ     F                 ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC
 YYYYZ                       ZYYYY
-YYPYZ                       ZYPYY
 YYYYZ                       ZYYYY
+YYYYZ         }             ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC
 YYYYZ                       ZYYYY
-YYPYZ                       ZYPYY
+YYYYZ                       ZYYYY
 YYYYZ               F       ZYYYY
 CCCCCXXXXXXXXXXXXXXXXXXXXXXXCCCCC 
 YYYZ                         ZYYY
-YPYZ                         ZYPY
+YYYZ                         ZYYY
 YYYZ                         ZYYY
 CCCCXXXXXXXXXXXXXXXXXXXXXXXXXCCCC
 YYYZ                         ZYYY
-YPYZ                         ZYPY
-YYYZ      U                  ZYYY
+YYYZ   U                     ZYYY
+YYYZ                         ZYYY
 YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
